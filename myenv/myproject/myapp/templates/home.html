@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Olive &amp; Ember | Home
+{% endblock %}
+{% block css %}
+.home-hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 590px;
+    padding: 72px 0 86px;
+}
+
+.home-hero h1 {
+    max-width: 570px;
+    margin: 0;
+    font-size: clamp(3.2rem, 7vw, 6.4rem);
+    font-weight: 400;
+    line-height: 0.93;
+}
+
+.home-hero h1 em { color: var(--tomato); font-style: normal; }
+
+.hero-copy {
+    max-width: 440px;
+    margin: 28px 0 32px;
+    color: var(--muted);
+    font-size: 1.08rem;
+    line-height: 1.75;
+}
+
+.hero-note {
+    display: inline-block;
+    margin-left: 18px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    vertical-align: middle;
+}
+
+.hero-image {
+    position: relative;
+    min-height: 460px;
+    background: url("{% static 'images/pizza.jpg' %}") center/cover;
+    box-shadow: 22px 22px 0 var(--gold);
+}
+
+.hero-image::after {
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    padding: 12px 15px;
+    background: var(--paper);
+    color: var(--tomato);
+    content: "Made slowly · served warmly";
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9rem;
+}
+
+.home-strip {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+}
+
+.strip-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 30px 0;
+}
+
+.strip-inner div { padding-right: 24px; border-right: 1px solid var(--line); }
+.strip-inner div:last-child { border: 0; }
+.strip-inner strong { display: block; margin-bottom: 7px; font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; }
+.strip-inner span { color: var(--muted); font-size: 0.88rem; }
+
+@media (max-width: 760px) {
+    .home-hero { grid-template-columns: 1fr; gap: 45px; padding: 55px 0 75px; }
+    .home-hero h1 { font-size: clamp(3.4rem, 17vw, 5.6rem); }
+    .hero-image { min-height: 330px; box-shadow: 12px 12px 0 var(--gold); }
+    .strip-inner { grid-template-columns: 1fr; gap: 20px; }
+    .strip-inner div { padding: 0 0 18px; border-right: 0; border-bottom: 1px solid var(--line); }
+}
+{% endblock %}
+{% block content %}
+<main>
+    <section class="page-wrap home-hero">
+        <div>
+            <p class="eyebrow">Neighborhood kitchen · Since 2018</p>
+            <h1>Good food<br>has a <em>place.</em></h1>
+            <p class="hero-copy">Seasonal plates, wood-fired comfort, and a table that always has room for one more.</p>
+            <a class="button" href="{% url 'food' %}">Explore the menu</a>
+            <span class="hero-note">Open Tuesday–Sunday<br>11:30 am–10:00 pm</span>
+        </div>
+        <div class="hero-image" role="img" aria-label="Fresh pizza with herbs on a wooden table"></div>
+    </section>
+    <section class="home-strip">
+        <div class="page-wrap strip-inner">
+            <div><strong>Local ingredients</strong><span>From nearby growers and makers.</span></div>
+            <div><strong>Simple, generous plates</strong><span>Familiar flavors with a little spark.</span></div>
+            <div><strong>Come as you are</strong><span>Good company is always welcome.</span></div>
+        </div>
+    </section>
+</main>
+{% endblock %}

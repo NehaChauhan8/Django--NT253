@@ -1,0 +1,6 @@
+<P>{{ post.title }}</P>
+<P>{{ post.post }}</P>
+{% if post.thumbnail %}
+    <img src="{{ post.thumbnail.url }}" height="300" width="300" alt="Thumbnail">
+    <a href="{% url 'b' %}">Back to all the blog posts</a>
+{% endif %}

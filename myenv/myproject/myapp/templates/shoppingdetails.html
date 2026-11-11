@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
+    {% for item in product_list %}
+    {% if item.name == shopping_item %}
+    <img src="{% static item.image %}" height="200" width="200">
+    <h1>{{ item.name }}</h1>
+    <p>Brand: {{ item.brand }}</p>
+    <p>Price: {{ item.price }}</p>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>

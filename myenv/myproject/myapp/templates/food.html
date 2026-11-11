@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block css %}
+p {
+    color: blue;
+}
+
+img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+}
+{% endblock %}
+
+{% block content %}
+
+<p>This is food page</p>
+
+<h1>Food Menu</h1>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Size</th>
+    </tr>
+
+    {% for item in menu %}
+    <tr style="background-color: pink;">
+        <td>{{ item.name }}</td>
+
+        <td>
+            <img src="{% static item.image %}"
+                 alt="{{ item.name }}">
+        </td>
+
+        <td>{{ item.price }}</td>
+        <td>{{ item.size }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
