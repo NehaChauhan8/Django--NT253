@@ -680,4 +680,25 @@ def get_cookie(request):
           return HttpResponse("Cookie not found.")
 
 #Create threee views name as cookieview1, cookieview2,cookieview3 that set the cookie names "last_page" 
-# to values "Page1", "Page2" and "Page3" respectively and also create responding URLS for the same. Now create a view named LastVisitedPage and fetch the last visited page via cookie and also create a corresponding URL for the same.
+# to values "Page1", "Page2" and "Page3" respectively and also create responding URLS for the same. 
+# Now create a view named LastVisitedPage and fetch the last visited page via cookie 
+# and also create a corresponding URL for the same.
+
+def cookieview1(request):
+    response = HttpResponse("Welcome toPage1")
+    response.set_cookie('last_page', 'Page1', max_age=60)  #expire in 1 minute
+    return response
+
+def cookieview2(request):
+     response = HttpResponse("Welcome to Page2")
+     response.set_cookie('last_page', 'Page2', max_age=60)  #expire in 1 minute
+     return response
+
+def cookieview3(request):
+     response = HttpResponse("Welcome to Page3")
+     response.set_cookie('last_page', 'Page3', max_age=60)  #expire in 1 minute
+     return response
+
+def LastVisitedPage(request):
+     last_page = request.COOKIES.get('last_page','No last visited page found.')
+     return render(request, 'lvp.html', {'lastvisitedpage': last_page})

@@ -64,6 +64,9 @@ urlpatterns = [
     path('blogpost_detail/<int:id>/',views.blogpost_detail, name='b_d'),#method to display the details of a specific blog post
     path('set_cookie/', views.set_cookie),  #method to set a cookie
     path('get_cookie/', views.get_cookie),  #method to get a cookie
-    
+    path('cookieview1/', views.cookieview1, name='cookieview1'),  #method to display a cookie value
+    path('cookieview2/', views.cookieview2, name='cookieview2'),
+    path('cookieview3/', views.cookieview3, name='cookieview3'),
+    path('lastvisitedpage/', views.LastVisitedPage, name='lastvisitedpage'),
     ]
 
